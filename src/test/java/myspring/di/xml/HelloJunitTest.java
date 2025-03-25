@@ -20,5 +20,15 @@ public class HelloJunitTest {
 		System.out.println(hello == helloBean);
 		//주소 비교 assertSame() 호출
 		assertSame(hello, helloBean);
+		//4. sayHello() 호출, assertEquals() 호출
+		assertEquals("Hello 스프링", hello.sayHello());
+		
+		
 	}
 }
+
+
+
+
+
+
