@@ -23,6 +23,12 @@ public class HelloJunitTest {
 		//4. sayHello() 호출, assertEquals() 호출
 		assertEquals("Hello 스프링", hello.sayHello());
 		
+		hello.print();
+		
+		//Printer의 하위 클래스인 StringPrinter 스프링빈을 요청하기
+		Printer printer = context.getBean("strPrinter", Printer.class);
+		assertEquals("Hello 스프링", printer.toString());
+		
 		
 	}
 }
