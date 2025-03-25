@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
 
 @Component("helloBean")
 public class HelloBean {
-	@Value("어노테이션")
+	@Value("${myName}") //어노테이션
 	String name;
 	
-	@Autowired
-	@Qualifier("stringPrinter")
-	//@Resource(name="stringPrinter")
+//	@Autowired
+//	@Qualifier("${myPrinter}") //stringPrinter
+	@Resource(name="${myPrinter}")
 	PrinterBean printer;
 	
 	List<String> names;
