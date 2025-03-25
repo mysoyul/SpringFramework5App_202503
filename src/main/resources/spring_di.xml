@@ -17,14 +17,15 @@
 	
 	<!-- Hello 클래스를 SpringBean으로 설정 constructor injection -->
 	<bean id="helloC" class="myspring.di.xml.Hello">
-		<constructor-arg name="name" value="스프링생성자" />
+		<!-- Constructor Injection myNameConstructor=스프링생성자 -->
+		<constructor-arg name="name" value="${myNameConstructor}" />
 		<constructor-arg name="printer" ref="conPrinter" />
 	</bean>
 	
 	<!-- Hello 클래스를 SpringBean으로 설정 setter injection -->
 	<bean id="hello" class="myspring.di.xml.Hello" scope="singleton">
-		<!-- Setter Injection -->
-		<property name="name" value="스프링" /> <!-- setName() -->
+		<!-- Setter Injection myNameSetter=스프링 -->
+		<property name="name" value="${myNameSetter}" /> <!-- setName() -->
 		<property name="printer" ref="strPrinter" /> <!-- setPrinter() -->
 	</bean>
 	
