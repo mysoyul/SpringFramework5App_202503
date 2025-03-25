@@ -10,7 +10,13 @@
 	<!-- ConsolePrinter 클래스를 SpringBean으로 설정 -->
 	<bean id="conPrinter" class="myspring.di.xml.ConsolePrinter" />
 	
-	<!-- Hello 클래스를 SpringBean으로 설정 -->
+	<!-- Hello 클래스를 SpringBean으로 설정 constructor injection -->
+	<bean id="helloC" class="myspring.di.xml.Hello">
+		<constructor-arg name="name" value="스프링생성자" />
+		<constructor-arg name="printer" ref="conPrinter" />
+	</bean>
+	
+	<!-- Hello 클래스를 SpringBean으로 설정 setter injection -->
 	<bean id="hello" class="myspring.di.xml.Hello" scope="singleton">
 		<!-- Setter Injection -->
 		<property name="name" value="스프링" /> <!-- setName() -->

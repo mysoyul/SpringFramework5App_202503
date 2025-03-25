@@ -15,8 +15,7 @@ public class HelloJunitTest {
 	@BeforeEach
 	void create_container() {
 		//1. Container 객체생성
-		context = new GenericXmlApplicationContext("classpath:spring_di.xml");
-		
+		context = new GenericXmlApplicationContext("classpath:spring_di.xml");		
 	}
 	
 	@Test
