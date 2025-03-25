@@ -7,12 +7,20 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 //Assertions 클래스가 제공하는 모든 static 메서드를 import 한다.
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
+
 public class HelloJunitTest {
+	ApplicationContext context = null;
+	
+	@BeforeEach
+	void create_container() {
+		//1. Container 객체생성
+		context = new GenericXmlApplicationContext("classpath:spring_di.xml");
+		
+	}
+	
 	@Test
 	void hello() {
-		//1. Container 객체생성
-		ApplicationContext context = 
-				new GenericXmlApplicationContext("classpath:spring_di.xml");
 		//2. Container에게  Hello 스프링빈을 요청하기
 		Hello hello = (Hello)context.getBean("hello");
 		Hello helloBean = context.getBean("hello", Hello.class);
