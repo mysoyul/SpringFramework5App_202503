@@ -37,5 +37,11 @@
 		<!-- SqlSessionTemplate(SqlSessionFactory) 생성자만 있음-->
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
+	<!-- MapperScannerConfigurer 설정 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="myspring.**.dao.mapper"/>
+		<property name="sqlSessionTemplateBeanName" value="sqlSession" /> 
+	</bean>
+	
 
 </beans>
