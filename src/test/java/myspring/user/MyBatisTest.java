@@ -2,6 +2,7 @@ package myspring.user;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
+import java.util.function.Consumer;
 
 import javax.sql.DataSource;
 
@@ -15,6 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import myspring.user.dao.mapper.UserMapper;
+import myspring.user.service.UserService;
 import myspring.user.vo.UserVO;
 
 @ExtendWith(SpringExtension.class)
@@ -33,7 +35,27 @@ public class MyBatisTest {
 	@Autowired
 	UserMapper userMapper;
 	
+	@Autowired
+	UserService userService;
+	
 	@Test
+	void service() {
+		//forEach(Consumer) 
+		//Consumer의 추상메서드   void accept(T t)
+		//1. Anonymous Inner class 
+		userService.getUserList()
+			.forEach(new Consumer<UserVO>() {
+				@Override
+				public void accept(UserVO vo) {
+					System.out.println(vo);					
+				}
+			});
+		
+			
+	}
+	
+	
+	@Test @Disabled
 	void userMapper() {
 		UserVO user = userMapper.selectUserById("dooly");
 		System.out.println(user);
