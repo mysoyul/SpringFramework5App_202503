@@ -23,7 +23,7 @@ public class PerformanceTraceAdvice {
 		long start = System.currentTimeMillis();
 		try {
 			// new Object[] {new String("dooly")}
-			// 타겟의 메서드 호출
+			// 타겟의 메서드 호출 - Hold 되어 있던 Target의 메서드가 다시 실행 될수 있도록 해줌
 			Object result = joinPoint.proceed();
 			return result;
 		} finally {
@@ -31,6 +31,7 @@ public class PerformanceTraceAdvice {
 			long finish = System.currentTimeMillis();
 			System.out.println(signatureString + " 종료");
 			System.out.println(signatureString + " 실행 시간 : " + (finish - start) + " ms");
+			System.out.println(targetName + " 객체 종료");
 		}
 	}
 }
