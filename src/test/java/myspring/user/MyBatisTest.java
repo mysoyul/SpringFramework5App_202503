@@ -5,6 +5,8 @@ import java.sql.DatabaseMetaData;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,15 @@ public class MyBatisTest {
 	@Autowired
 	DataSource dataSource;
 	
+	@Autowired
+	SqlSessionFactory sessionFactory;
+	
 	@Test
+	void mybatis() {
+		System.out.println(sessionFactory.getClass().getName());
+	}
+	
+	@Test @Disabled
 	void conn() throws Exception {
 		Connection connection = dataSource.getConnection();
 		DatabaseMetaData metaData = connection.getMetaData();
