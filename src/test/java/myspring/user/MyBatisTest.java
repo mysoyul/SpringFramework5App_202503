@@ -2,6 +2,7 @@ package myspring.user;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
+import java.util.List;
 import java.util.function.Consumer;
 
 import javax.sql.DataSource;
@@ -40,16 +41,18 @@ public class MyBatisTest {
 	
 	@Test
 	void service() {
+		List<UserVO> userList = userService.getUserList();
+		
 		//forEach(Consumer) 
 		//Consumer의 추상메서드   void accept(T t)
 		//1. Anonymous Inner class 
-		userService.getUserList()
-			.forEach(new Consumer<UserVO>() {
+		userList.forEach(new Consumer<UserVO>() {
 				@Override
 				public void accept(UserVO vo) {
 					System.out.println(vo);					
 				}
 			});
+		//2. Lambda Expression 람다식
 		
 			
 	}
