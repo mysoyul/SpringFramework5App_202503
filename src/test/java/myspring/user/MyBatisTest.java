@@ -42,6 +42,12 @@ public class MyBatisTest {
 	@Test
 	void service() {
 		List<UserVO> userList = userService.getUserList();
+		/*
+		 * class MyConsumer implements Consumer{
+		 *     accept()
+		 * }
+		 * userList.forEach(new MyConsumer());
+		 */		
 		
 		//forEach(Consumer) 
 		//Consumer의 추상메서드   void accept(T t)
@@ -53,8 +59,9 @@ public class MyBatisTest {
 				}
 			});
 		//2. Lambda Expression 람다식
-		
-			
+		userList.forEach(user -> System.out.println(">> UserVO = " + user));
+		//3. Method Reference - 람다식을 더 단순하게 argument 생략가능
+		userList.forEach(System.out::println);
 	}
 	
 	
