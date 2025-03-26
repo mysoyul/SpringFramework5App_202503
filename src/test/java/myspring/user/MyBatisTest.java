@@ -40,6 +40,12 @@ public class MyBatisTest {
 	UserService userService;
 	
 	@Test
+	void user_select_update() {
+		UserVO user = userService.getUser("gildong");
+		System.out.println(user);
+	}
+	
+	@Test @Disabled
 	void service() {
 		List<UserVO> userList = userService.getUserList();
 		/*
