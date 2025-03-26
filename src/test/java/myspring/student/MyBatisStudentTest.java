@@ -21,5 +21,6 @@ public class MyBatisStudentTest {
 	void student1() {
 		List<StudentVO> stuList = 
 				mapper.selectStudentDept();
+		stuList.forEach(System.out::println);
 	}
 }
