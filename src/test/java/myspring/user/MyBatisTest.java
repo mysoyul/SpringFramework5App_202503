@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import myspring.user.dao.mapper.UserMapper;
 import myspring.user.vo.UserVO;
 
 @ExtendWith(SpringExtension.class)
@@ -29,7 +30,16 @@ public class MyBatisTest {
 	@Autowired
 	SqlSession sqlSession;
 	
+	@Autowired
+	UserMapper userMapper;
+	
 	@Test
+	void userMapper() {
+		UserVO user = userMapper.selectUserById("dooly");
+		System.out.println(user);
+	}
+	
+	@Test @Disabled
 	void mybatis() {
 		System.out.println(sessionFactory.getClass().getName());
 		UserVO user = sqlSession.selectOne("userNS.selectUserById", "dooly");
