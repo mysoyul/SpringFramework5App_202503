@@ -43,6 +43,8 @@ public class MyBatisTest {
 	void user_select_update() {
 		UserVO user = userService.getUser("gildong");
 		System.out.println(user);
+		user.setCity("서울");
+		userService.updateUser(user);
 	}
 	
 	@Test @Disabled

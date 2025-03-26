@@ -16,7 +16,11 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
-	<!-- Transaction Advice 설정 -->
+	<!-- 
+		Transaction Advice 설정
+		스프링이 트랜잭션 관련된 기능을 수행하는 Advice(공통기능) 작성해서 제공해 주고 있다.
+		 tx:advice 설정으로 트랜잭션 기능을 제공하는 Advice를 사용할 수 있다.
+	-->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="get*" read-only="true"/>
@@ -25,7 +29,7 @@
 <!-- 			<tx:method name="deleteUser" propagation="NOT_SUPPORTED"/> -->
 <!-- 			<tx:method name="delete" propagation="MANDATORY"/> -->
 			
-			<!-- 예외=Existing transaction found for transaction marked with propagation 'never' -->
+			<!-- 예외=No Existing transaction found for transaction marked with propagation 'never' -->
 			<!-- updateUser(): Service, update(): Dao  -->
 			<tx:method name="updateUser" propagation="NOT_SUPPORTED"/>
 <!-- 			<tx:method name="update" propagation="REQUIRED" /> -->
@@ -33,7 +37,8 @@
 		</tx:attributes>
 	</tx:advice>
 	
-	<!-- Advisor 설정 : Transaction Advice를 어떤 Target에 적용할지를 설정함  -->
+	<!-- Advisor(Advice + PointCut) 설정 : 
+		Transaction Advice를 어떤 Target에 적용할지를 설정함  -->
 	<aop:config>
 		<aop:pointcut expression="execution(public * myspring.**..*(..))" id="txPointCut"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
